@@ -1,5 +1,5 @@
 # Commands:
-#   hubot ryan - repspons with a nice message
+#   hubot ryan - responds with a nice message
 
 
 
