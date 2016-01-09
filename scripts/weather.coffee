@@ -5,6 +5,7 @@ rp = require('request-promise')
 
 module.exports = (robot) ->
   robot.respond /weather (.*)/i, (msg) ->
+    locationOrig = msg.match[1]
     location = escape(msg.match[1]) or 'Kansas City'
     locationOptions =
       uri: 'http://maps.googleapis.com/maps/api/geocode/json'
@@ -46,10 +47,9 @@ module.exports = (robot) ->
               msg.send('No weather today. Stay indoors and don\'t look outside.')
             )
         else
-          if location == 'my ass'
-            msg.send('It\'s hot and moist today.')
+          if locationOrig == 'my ass'
+            msg.send('It\'s hot and moist out today.')
           else
-            console.log(location)
             msg.send('Nope. Sorry. Not happening.')
     )
     .catch( (err) ->
