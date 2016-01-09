@@ -1,6 +1,5 @@
-
 # Commands:
-#   hubot weather <address> - Weather info for the specified address
+#   hubot weather - Weather info for the specified address
 
 rp = require('request-promise')
 
@@ -17,6 +16,7 @@ module.exports = (robot) ->
 
     rp(locationOptions)
       .then( (data) ->
+        if data.length > 0
         latitude = data.results[0].geometry.location.lat
         longitude = data.results[0].geometry.location.lng
         latlng = latitude + ',' + longitude
@@ -43,9 +43,14 @@ module.exports = (robot) ->
                     'Min Temp:         ' + minTemp + deg )
           )
           .catch( (err) ->
-            msg.send('Error in forecast call.\n' + err)
+            msg.send('No weather today. Stay indoors and don\'t look outside.')
           )
+      else
+        if location === 'my ass'
+          msg.send('It\'s hot and moist today.')
+        else
+          msg.send('Nope. Sorry. Not happening.')
     )
     .catch( (err) ->
-      msg.send("Error in google geocode call.\n" +  err )
+      msg.send("Whoops something went wrong.)
     )
