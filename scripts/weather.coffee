@@ -18,8 +18,8 @@ module.exports = (robot) ->
     rp(locationOptions)
       .then( (data) ->
         console.log(data)
-        latitude = data.results.geometry.location.lat
-        longitude = data.results.geometry.location.lng
+        latitude = data.results[0].geometry.location.lat
+        longitude = data.results[0].geometry.location.lng
         latlng = latitude + ',' + longitude
         forecastOptions =
           uri: 'https://api.forecast.io/forecast/' + process.env.FORECAST_KEY + '/' + latlng
