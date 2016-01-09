@@ -47,9 +47,9 @@ module.exports = (robot) ->
             )
         else
           if location == 'my ass'
-            console.log(location)
             msg.send('It\'s hot and moist today.')
           else
+            console.log(location)
             msg.send('Nope. Sorry. Not happening.')
     )
     .catch( (err) ->
