@@ -2,7 +2,7 @@
 # Commands:
 #   hubot weather <address> - Weather info for the specified address
 
-var rp = require('request-promise');
+rp = require('request-promise');
 
 
 
