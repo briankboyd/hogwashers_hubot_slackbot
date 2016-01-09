@@ -10,15 +10,16 @@ module.exports = (robot) ->
     locationOptions =
       uri: 'http://maps.googleapis.com/maps/api/geocode/json'
       qs:
-        address: '64155'
+        address: location
       headers:
         'User-Agent': 'Request-Promise'
       json: true
 
     rp(locationOptions)
       .then( (data) ->
-        latitude = data.geometry.location.lat
-        longitude = data.geometry.location.lng
+        console.log(data)
+        latitude = data.results.geometry.location.lat
+        longitude = data.results.geometry.location.lng
         latlng = latitude + ',' + longitude
         forecastOptions =
           uri: 'https://api.forecast.io/forecast/' + process.env.FORECAST_KEY + '/' + latlng
