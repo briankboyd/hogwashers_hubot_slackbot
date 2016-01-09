@@ -17,7 +17,6 @@ module.exports = (robot) ->
 
     rp(locationOptions)
       .then( (data) ->
-        console.log(data)
         latitude = data.results[0].geometry.location.lat
         longitude = data.results[0].geometry.location.lng
         latlng = latitude + ',' + longitude
@@ -35,7 +34,7 @@ module.exports = (robot) ->
             summary = data.currently.summary
             icon = data.currently.icon
             feelsLike = data.currently.apparentTemperature
-            dailyData = data.daily[0]
+            dailyData = data.daily.data[0]
             maxTemp = dailyData.temperatureMax
             minTemp = dailyData.temperatureMin
             msg.send('Current Temp: ' + currentTemp + '\n' +
