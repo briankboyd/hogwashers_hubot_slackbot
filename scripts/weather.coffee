@@ -46,7 +46,7 @@ module.exports = (robot) ->
               msg.send('No weather today. Stay indoors and don\'t look outside.')
             )
         else
-          if location === 'my ass'
+          if location == 'my ass'
             msg.send('It\'s hot and moist today.')
           else
             msg.send('Nope. Sorry. Not happening.')
