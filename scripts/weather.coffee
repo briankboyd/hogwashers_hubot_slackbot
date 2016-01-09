@@ -11,7 +11,6 @@ module.exports = (robot) ->
       uri: 'http://maps.googleapis.com/maps/api/geocode/json',
       qs:
         address: location
-
       headers:
           'User-Agent': 'Request-Promise'
     json: true
@@ -45,7 +44,7 @@ module.exports = (robot) ->
         .catch( (err) ->
           msg.send('Error in forecast call.\n' + err)
         )
-  )
-  .catch( (err) ->
-    msg.send("Error in google geocode call.\n" +  err )
-  )
+    )
+    .catch( (err) ->
+      msg.send("Error in google geocode call.\n" +  err )
+    )
