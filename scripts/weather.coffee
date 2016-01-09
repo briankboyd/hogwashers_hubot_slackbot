@@ -52,5 +52,5 @@ module.exports = (robot) ->
           msg.send('Nope. Sorry. Not happening.')
     )
     .catch( (err) ->
-      msg.send("Whoops something went wrong.)
+      msg.send('Whoops something went wrong.')
     )
