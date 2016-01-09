@@ -2,41 +2,35 @@
 # Commands:
 #   hubot weather <address> - Weather info for the specified address
 
-rp = require('request-promise');
-
-
+rp = require('request-promise')
 
 module.exports = (robot) ->
   robot.respond /weather (.*)/i, (msg) ->
     location = escape(msg.match[1]) or "Kansas City"
-    locationOptions = {
+    locationOptions =
       uri: 'http://maps.googleapis.com/maps/api/geocode/json',
-      qs: {
+      qs:
         address: location
-      },
-        headers: {
+
+      headers:
           'User-Agent': 'Request-Promise'
-    },
     json: true
-    }
 
     rp(locationOptions)
-      .then( fucntion(data) {
+      .then( (data) ->
         latitude = data.geometry.location.lat
         longitude = data.geometry.location.lng
         latlng = latitude + ',' + longitude
-        forecastOptions = {
+        forecastOptions =
           uri: 'https://api.forecast.io/forecast/' + process.env.FORECAST_KEY + '/' + latlng
-          qs: {
+          qs:
             units: 'us'
-          },
-          headers: {
+          headers:
             'User-Agent': 'Request-Promise'
-          },
           json: true
-      }
+
       rp(forecastOptions)
-        .then(function(data) {
+        .then((data) ->
           currentTemp = data.currently.temperature
           summary = data.currently.summary
           icon = data.currently.icon
@@ -47,13 +41,11 @@ module.exports = (robot) ->
           msg.send('Current Temp: ' + currentTemp + '\n' +
                   'Max Temp:      ' + maxTemp + '\n' +
                   'Min Temp:      ' + minTemp +)
-        })
-        .catch(function(err) {
+        )
+        .catch( (err) ->
           msg.send('Error in forecast call.\n' + err)
-        })
-
-  })
-  .catch(function(err){
+        )
+  )
+  .catch( (err) ->
     msg.send("Error in google geocode call.\n" +  err )
-  })
-  msg.send "Ryan is a gawd among programmers!"
+  )
