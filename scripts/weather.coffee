@@ -7,11 +7,10 @@ rp = require('request-promise')
 module.exports = (robot) ->
   robot.respond /weather (.*)/i, (msg) ->
     location = escape(msg.match[1]) or 'Kansas City'
-    console.log(location)
     locationOptions =
       uri: 'http://maps.googleapis.com/maps/api/geocode/json'
       qs:
-        address: location
+        address: '64155'
       headers:
         'User-Agent': 'Request-Promise'
       json: true
