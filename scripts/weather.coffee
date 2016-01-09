@@ -39,7 +39,7 @@ module.exports = (robot) ->
           minTemp = dailyData.temperatureMin
           msg.send('Current Temp: ' + currentTemp + '\n' +
                   'Max Temp:      ' + maxTemp + '\n' +
-                  'Min Temp:      ' + minTemp +)
+                  'Min Temp:      ' + minTemp )
         )
         .catch( (err) ->
           msg.send('Error in forecast call.\n' + err)
