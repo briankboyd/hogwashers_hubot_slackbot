@@ -44,8 +44,8 @@ module.exports = (robot) ->
                 deg = '°F'
                 msg.send(address + '\n' +
                         'Currently:   ' + Math.round(currentTemp) + deg  + '\n' +
-                        'High:            ' + Math.round(maxTemp) + deg + '\n' +
-                        'Low:             ' + Math.round(minTemp) + deg )
+                        'High:             ' + Math.round(maxTemp) + deg + '\n' +
+                        'Low:              ' + Math.round(minTemp) + deg )
               )
               .catch( (err) ->
                 msg.send('No weather today. Stay indoors and don\'t look outside.')
