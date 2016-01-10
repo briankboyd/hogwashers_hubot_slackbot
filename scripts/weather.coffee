@@ -20,9 +20,11 @@ module.exports = (robot) ->
       rp(locationOptions)
         .then( (data) ->
           if data.results[0].geometry
-            latitude = data.results[0].geometry.location.lat
-            longitude = data.results[0].geometry.location.lng
+            geo = data.results[0]
+            latitude = geo.geometry.location.lat
+            longitude = geo.geometry.location.lng
             latlng = latitude + ',' + longitude
+            address = geo.formatted_address
             forecastOptions =
               uri: 'https://api.forecast.io/forecast/' + process.env.FORECAST_KEY + '/' + latlng
               qs:
@@ -40,9 +42,10 @@ module.exports = (robot) ->
                 maxTemp = dailyData.temperatureMax
                 minTemp = dailyData.temperatureMin
                 deg = '°F'
-                msg.send('Current Temp: ' + currentTemp + deg  + '\n' +
-                        'Max Temp:         ' + maxTemp + deg + '\n' +
-                        'Min Temp:         ' + minTemp + deg )
+                msg.send(address + '\n' +
+                        'Currently: ' + Math.round(currentTemp) + deg  + '\n' +
+                        'High:       ' + Math.round(maxTemp) + deg + '\n' +
+                        'Low:         ' + Math.round(minTemp) + deg )
               )
               .catch( (err) ->
                 msg.send('No weather today. Stay indoors and don\'t look outside.')
