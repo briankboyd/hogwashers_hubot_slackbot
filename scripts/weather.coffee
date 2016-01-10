@@ -30,7 +30,6 @@ module.exports = (robot) ->
                 headers:
                   'User-Agent': 'Request-Promise'
                 json: true
-
               rp(forecastOptions)
                 .then((data) ->
                   currentTemp = data.currently.temperature
