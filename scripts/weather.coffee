@@ -17,7 +17,7 @@ module.exports = (robot) ->
 
     rp(locationOptions)
       .then( (data) ->
-        if results[0].geometry
+        if data.results[0].geometry
           latitude = data.results[0].geometry.location.lat
           longitude = data.results[0].geometry.location.lng
           latlng = latitude + ',' + longitude
