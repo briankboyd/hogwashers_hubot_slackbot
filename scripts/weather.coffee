@@ -27,9 +27,9 @@ module.exports = (robot) ->
                 uri: 'https://api.forecast.io/forecast/' + process.env.FORECAST_KEY + '/' + latlng
                 qs:
                   units: 'us'
-                headers:
-                  'User-Agent': 'Request-Promise'
+                headers: 'User-Agent': 'Request-Promise'
                 json: true
+
               rp(forecastOptions)
                 .then((data) ->
                   currentTemp = data.currently.temperature
