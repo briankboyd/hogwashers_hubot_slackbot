@@ -1,5 +1,6 @@
 # Commands:
 #   hubot kait disapproves - Kait disapproves!
+#   hubot ben stir* - Ben is sexy coffee
 
 
 
