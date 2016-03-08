@@ -11,3 +11,6 @@ module.exports = (robot) ->
 
   robot.respond /ben stir(.+)/i, (msg) ->
     msg.send "https://goo.gl/hl6DcH"
+
+  robot.listen /pretty bird/i, (msg) ->
+    msg.send "http://www.urbandictionary.com/define.php?term=Boyd"
