@@ -15,5 +15,5 @@ module.exports = (robot) ->
   robot.hear /pretty bird/i, (msg) ->
     msg.send "http://www.urbandictionary.com/define.php?term=Boyd"
 
-  robot.hear /jj me/i, (msg) ->
+  robot.hear /jj(.+)/i, (msg) ->
     msg.send "http://www.treknews.net/wp-content/uploads/2013/01/jj-abrams-star-wars-episode-vii.jpg"
