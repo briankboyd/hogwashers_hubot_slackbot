@@ -30,7 +30,7 @@ module.exports = (robot) ->
     if name
       endpoint = FOAAS + operations[Math.floor(Math.random() * operations.length)]
       endpoint = endpoint.replace(":name",name).replace(":from",from)
-      robot.http(endpoint).header("Accept", "text/plain").get() (err, res, body) ->
+      robot.http(endpoint).header("Accept", "text/plain").get() (err, httpRes, body) ->
         res.send body
     else
       res.send "I didn't understand that"
